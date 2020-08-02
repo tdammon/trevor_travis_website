@@ -2,14 +2,21 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [num, setNum] =React.useState(0);
+  const [appArray, setAppArray] = React.useState(["red", "blue", "gray"]);
+  const changeNum = (tempNum) => {
+    setNum(++tempNum);
+  }
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+          {appArray.map(color => {return (<div>{color}</div>)})}
+        </div>
+        <button onClick={()=>changeNum(num)}>button test</button>
+        <button onClick={()=>setAppArray(appArray.push("yellow"))}>Add color</button>
         <a
           className="App-link"
           href="https://reactjs.org"
